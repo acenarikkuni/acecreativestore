@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Creative - Premium Printing & Gift Solutions</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #f8f9fa;
+            --dark: #202124;
+            --light: #ffffff;
+            --accent: #ea4335;
+            --gray: #5f6368;
+            --light-gray: #e8eaed;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/IMAGES/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: var(--light);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0d5bbd;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+        }
+        
+        .section-title p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-top: 10px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .service-price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 18px;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: var(--secondary);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .product-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 18px;
+        }
+        
+        .product-action {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .product-action .btn {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: var(--gray);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--light);
+        }
+        
+        .contact-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-text p {
+            color: var(--gray);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: var(--secondary);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        textarea.form-control {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            color: #b0b0b0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #b0b0b0;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .modal-content {
+            background-color: var(--light);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 800px;
+            animation: modalOpen 0.5s;
+        }
+        
+        @keyframes modalOpen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            color: var(--gray);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-modal:hover {
+            color: var(--dark);
+        }
+        
+        .product-detail {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .product-detail-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .product-detail-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .product-detail-content {
+            flex: 1;
+        }
+        
+        .product-detail-content h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .product-detail-content p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .product-detail-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .product-variants {
+            margin-bottom: 20px;
+        }
+        
+        .product-variants h4 {
+            margin-bottom: 10px;
+        }
+        
+        .variant-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .variant-option {
+            padding: 8px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .variant-option.active {
+            background-color: var(--primary);
+            color: var(--light);
+            border-color: var(--primary);
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .product-detail {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .about-text h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="/images/logo.png" alt="logo" width="100px" >
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Premium Printing & Gift Solutions</h2>
+                <p>Your one-stop shop for custom mementos, acrylic products, home décor and more</p>
+                <a href="#products" class="btn">Explore Our Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer a wide range of printing and customization services</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/images/print.jpg" alt="Printing Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>Printing Services</h3>
+                        <p>High-quality printing solutions for all your personal and business needs.</p>
+                        <div class="service-price">Starting from ₹100</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/images/memento.jpg" alt="Custom Mementos">
+                    </div>
+                    <div class="service-content">
+                        <h3>Custom Mementos</h3>
+                        <p>Personalized mementos for events, anniversaries, and special occasions.</p>
+                        <div class="service-price">Starting from ₹350</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/images/qr.jpg" alt="Acrylic Products">
+                    </div>
+                    <div class="service-content">
+                        <h3>Acrylic Products</h3>
+                        <p>Elegant acrylic products including name plates, photo frames, and more.</p>
+                        <div class="service-price">Starting from ₹250</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/images/wood.jpg" alt="Wooden Crafts">
+                    </div>
+                    <div class="service-content">
+                        <h3>Wooden Crafts</h3>
+                        <p>Beautiful wooden items customized to your specifications.</p>
+                        <div class="service-price">Starting from ₹400</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+                <p>Browse our collection of custom-made products</p>
+            </div>
+            <div class="product-categories">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="mementos">Mementos</button>
+                <button class="category-btn" data-category="acrylic">Acrylic Products</button>
+                <button class="category-btn" data-category="wood">Wooden Items</button>
+                <button class="category-btn" data-category="nameboard">Name Boards</button>
+                <button class="category-btn" data-category="other">Other Items</button>
+            </div>
+            <div class="products-grid">
+                <!-- Mementos -->
+                <div class="product-card" data-category="mementos">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/300" alt="Crystal Memento">
+                    </div>
+                    <div class="product-content">
+                        <h3>Crystal Memento</h3>
+                        <p>Elegant crystal memento for corporate events and awards.</p>
+                        <div class="product-price">₹850</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="1">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="mementos">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/300" alt="Wooden Trophy">
+                    </div>
+                    <div class="product-content">
+                        <h3>Wooden Trophy</h3>
+                        <p>Custom wooden trophy with personalized engraving.</p>
+                        <div class="product-price">₹650</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="2">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="mementos">
+                    <div class="product-img">
+                        <img src="/images/acrymemento.jpg" alt="Acrylic Shield">
+                    </div>
+                    <div class="product-content">
+                        <h3>Acrylic Shield</h3>
+                        <p>Modern acrylic shield memento for recognition and awards.</p>
+                        <div class="product-price">₹750</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="3">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Acrylic Products -->
+                <div class="product-card" data-category="acrylic">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/300" alt="Acrylic Photo Frame">
+                    </div>
+                    <div class="product-content">
+                        <h3>Acrylic Photo Frame</h3>
+                        <p>Elegant acrylic photo frame for your cherished memories.</p>
+                        <div class="product-price">₹450</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="4">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="acrylic">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/300" alt="Acrylic Calendar">
+                    </div>
+                    <div class="product-content">
+                        <h3>Acrylic Calendar</h3>
+                        <p>Personalized acrylic desk calendar with custom design.</p>
+                        <div class="product-price">₹350</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="5">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="acrylic">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/300" alt="Acrylic Keychain">
+                    </div>
+                    <div class="product-content">
+                        <h3>Acrylic Keychain</h3>
+                        <p>Custom-designed acrylic keychains for gifts or promotions.</p>
+                        <div class="product-price">₹150</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="6">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wooden Items -->
+                <div class="product-card" data-category="wood">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/300" alt="Wooden Clock">
+                    </div>
+                    <div class="product-content">
+                        <h3>Wooden Clock</h3>
+                        <p>Handcrafted wooden clock with customized design.</p>
+                        <div class="product-price">₹950</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="7">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="wood">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/300" alt="Wooden Pen Stand">
+                    </div>
+                    <div class="product-content">
+                        <h3>Wooden Pen Stand</h3>
+                        <p>Elegant wooden pen stand for office or home.</p>
+                        <div class="product-price">₹550</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="8">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Name Boards -->
+                <div class="product-card" data-category="nameboard">
+                    <div class="product-img">
+                        <img src="/images/acrymemento.jpg" alt="Acrylic Name Board">
+                    </div>
+                    <div class="product-content">
+                        <h3>Acrylic Name Board</h3>
+                        <p>Modern acrylic name board for home or office.</p>
+                        <div class="product-price">₹850</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="9">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="nameboard">
+                    <div class="product-img">
+                        <img src="/images/nameboard.jpg" alt="Wooden Name Plate">
+                    </div>
+                    <div class="product-content">
+                        <h3>Wooden Name Plate</h3>
+                        <p>Classic wooden name plate with carved design.</p>
+                        <div class="product-price">₹650</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="10">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Items -->
+                <div class="product-card" data-category="other">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/300" alt="QR Code Stand">
+                    </div>
+                    <div class="product-content">
+                        <h3>QR Code Stand</h3>
+                        <p>Elegant stand for displaying QR codes at businesses.</p>
+                        <div class="product-price">₹450</div>
+                        <div class="product-action">
+                            <a href="#" class="btn product-view" data-product-id="11">View Details</a>
+                            <a href="#contact" class="btn">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="other">
+                    <div class="product-img">
+                        <img src="/images/calligraphy.jpg" alt="Calligraphy Clock">
+                    </div>
+                    <div class="product-content">
+                        <h3>Calligraphy Clock</h3>
+                        <p>Artistic clock with beautiful calligraphy design.</p>
+                        <div class="product-price">₹1250</div>
+                        <div class="product-action">
